@@ -32,7 +32,7 @@ public class Options
     public bool ThrowErrorOnFailure { get; set; } = true;
 
     /// <summary>
-    /// Message what will be used when error occurs
+    /// Message what will be used when error occurs.
     /// </summary>
     /// <example>Task failed during execution</example>
     [DefaultValue("Failed to send message to Slack")]
