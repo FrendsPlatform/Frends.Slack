@@ -68,7 +68,7 @@ public class UnitTests
     [TestMethod]
     public async Task ShouldSendPlainTextMessage()
     {
-        var result = await Slack.SendMessage(_textInput, _connection, _defaultOptions, CancellationToken.None);
+        var result = await SendMessage.Slack.SendMessage(_textInput, _connection, _defaultOptions, CancellationToken.None);
         Assert.IsTrue(result.Success);
         Assert.IsFalse(string.IsNullOrWhiteSpace(result.MessageTs));
     }
@@ -76,7 +76,7 @@ public class UnitTests
     [TestMethod]
     public async Task ShouldSendBlocksMessage()
     {
-        var result = await Slack.SendMessage(_blocksInput, _connection, _defaultOptions, CancellationToken.None);
+        var result = await SendMessage.Slack.SendMessage(_blocksInput, _connection, _defaultOptions, CancellationToken.None);
         Assert.IsTrue(result.Success);
         Assert.IsFalse(string.IsNullOrWhiteSpace(result.MessageTs));
     }
@@ -91,7 +91,7 @@ public class UnitTests
             Text = "Parent message for thread test",
         };
 
-        var parentResult = await Slack.SendMessage(parentInput, _connection, _defaultOptions, CancellationToken.None);
+        var parentResult = await SendMessage.Slack.SendMessage(parentInput, _connection, _defaultOptions, CancellationToken.None);
         Assert.IsTrue(parentResult.Success);
         Assert.IsFalse(string.IsNullOrWhiteSpace(parentResult.MessageTs));
 
@@ -103,7 +103,7 @@ public class UnitTests
             ThreadTs = parentResult.MessageTs,
         };
 
-        var result = await Slack.SendMessage(replyInput, _connection, _defaultOptions, CancellationToken.None);
+        var result = await SendMessage.Slack.SendMessage(replyInput, _connection, _defaultOptions, CancellationToken.None);
         Assert.IsTrue(result.Success);
     }
 
@@ -112,7 +112,7 @@ public class UnitTests
     {
         var invalidConnection = new Connection { Token = string.Empty };
 
-        var result = await Slack.SendMessage(_textInput, invalidConnection, _defaultOptions, CancellationToken.None);
+        var result = await SendMessage.Slack.SendMessage(_textInput, invalidConnection, _defaultOptions, CancellationToken.None);
 
         Assert.IsFalse(result.Success);
         StringAssert.Contains(result.Error.Message, "Slack token is required");
@@ -130,7 +130,7 @@ public class UnitTests
 
         await Assert.ThrowsExceptionAsync<Exception>(async () =>
         {
-            await Slack.SendMessage(_textInput, invalidConnection, options, CancellationToken.None);
+            await SendMessage.Slack.SendMessage(_textInput, invalidConnection, options, CancellationToken.None);
         });
     }
 
@@ -169,9 +169,9 @@ public class UnitTests
             Text = "Unfurl true https://www.youtube.com/watch?v=-ZaXNJ5fuas",
         };
 
-        var resultUnfurlFalse = await Slack.SendMessage(inputUnfurlFalse, _connection, optionsUnfurlFalse, CancellationToken.None);
+        var resultUnfurlFalse = await SendMessage.Slack.SendMessage(inputUnfurlFalse, _connection, optionsUnfurlFalse, CancellationToken.None);
         Assert.IsTrue(resultUnfurlFalse.Success);
-        var resultUnfurlTrue = await Slack.SendMessage(inputUnfurlTrue, _connection, optionsUnfurlTrue, CancellationToken.None);
+        var resultUnfurlTrue = await SendMessage.Slack.SendMessage(inputUnfurlTrue, _connection, optionsUnfurlTrue, CancellationToken.None);
         Assert.IsTrue(resultUnfurlFalse.Success);
     }
 }

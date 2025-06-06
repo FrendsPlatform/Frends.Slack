@@ -9,7 +9,7 @@ using Frends.Slack.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Frends.Slack;
+namespace Frends.Slack.SendMessage;
 
 /// <summary>
 /// Task class.
