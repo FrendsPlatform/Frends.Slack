@@ -1,9 +1,9 @@
-namespace Frends.Slack.Tests;
+namespace Frends.Slack.SendMessage.Tests;
 
 using Newtonsoft.Json.Linq;
 using System;
 using System.Threading;
-using Frends.Slack.Definitions;
+using Frends.Slack.SendMessage.Definitions;
 using System.IO;
 using dotenv.net;
 using System.Threading.Tasks;

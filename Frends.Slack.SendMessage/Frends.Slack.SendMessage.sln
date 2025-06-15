@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
 		README.md = README.md
-		..\.github\workflows\SendMesagge_build_and_test_on_main.yml = ..\.github\workflows\SendMesagge_build_and_test_on_main.yml
-		..\.github\workflows\SendMesagge_build_and_test_on_push.yml = ..\.github\workflows\SendMesagge_build_and_test_on_push.yml
-		..\.github\workflows\SendMesagge_release.yml = ..\.github\workflows\SendMesagge_release.yml
+		..\.github\workflows\SendMessage_build_and_test_on_main.yml = ..\.github\workflows\SendMessage_build_and_test_on_main.yml
+		..\.github\workflows\SendMessage_release.yml = ..\.github\workflows\SendMessage_release.yml
+		..\.github\workflows\SendMessage_build_and_test_on_push.yml = ..\.github\workflows\SendMessage_build_and_test_on_push.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frends.Slack.SendMessage", "Frends.Slack.SendMessage\Frends.Slack.SendMessage.csproj", "{4C566457-2EB4-4CAE-B047-F8F811C17910}"

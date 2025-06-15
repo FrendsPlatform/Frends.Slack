@@ -1,4 +1,4 @@
-﻿namespace Frends.Slack.Definitions;
+﻿namespace Frends.Slack.SendMessage.Definitions;
 
 /// <summary>
 /// Result of the task.

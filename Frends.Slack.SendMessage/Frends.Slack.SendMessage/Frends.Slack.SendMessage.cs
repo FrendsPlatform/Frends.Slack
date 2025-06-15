@@ -1,12 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Frends.Slack.Definitions;
 using Frends.Slack.Helpers;
-using Newtonsoft.Json;
+using Frends.Slack.SendMessage.Definitions;
 using Newtonsoft.Json.Linq;
 
 namespace Frends.Slack.SendMessage;
@@ -24,7 +22,7 @@ public static class Slack
     /// <param name="connection">Connection parameters.</param>
     /// <param name="options">Additional parameters.</param>
     /// <param name="cancellationToken">A cancellation token provided by Frends Platform.</param>
-    /// <returns>object { bool Success, string MessageTs, Error Error { string Message, dynamic AdditionalInfo } }</returns>
+    /// <returns>object { bool Success, string MessageTs, Error Error { string Message, Exception AdditionalInfo } }</returns>
     public static async Task<Result> SendMessage(
         [PropertyTab] Input input,
         [PropertyTab] Connection connection,

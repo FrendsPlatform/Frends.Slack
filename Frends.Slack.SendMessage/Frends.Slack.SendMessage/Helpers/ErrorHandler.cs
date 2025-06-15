@@ -1,5 +1,5 @@
 ﻿using System;
-using Frends.Slack.Definitions;
+using Frends.Slack.SendMessage.Definitions;
 
 namespace Frends.Slack.Helpers
 {

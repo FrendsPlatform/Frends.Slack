@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace Frends.Slack.Definitions;
+namespace Frends.Slack.SendMessage.Definitions;
 
 /// <summary>
 /// Additional parameters.
@@ -35,6 +36,7 @@ public class Options
     /// Message what will be used when error occurs.
     /// </summary>
     /// <example>Task failed during execution</example>
+    [DisplayFormat(DataFormatString = "Text")]
     [DefaultValue("Failed to send message to Slack")]
     public string ErrorMessageOnFailure { get; set; } = "Failed to send message to Slack";
 }

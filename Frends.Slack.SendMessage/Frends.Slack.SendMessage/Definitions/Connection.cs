@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Frends.Slack.Definitions;
+namespace Frends.Slack.SendMessage.Definitions;
 
 /// <summary>
 /// Connection parameters for Slack SendMessage task.
