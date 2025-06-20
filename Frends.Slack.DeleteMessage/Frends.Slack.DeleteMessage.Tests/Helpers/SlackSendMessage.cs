@@ -8,10 +8,10 @@ namespace Frends.Slack.DeleteMessage.Tests.Helpers
     internal class SlackSendMessage
     {
         public static async Task<string> SendMessage(
-        string text,
-        string channelId,
-        string token,
-        CancellationToken cancellationToken)
+            string text,
+            string channelId,
+            string token,
+            CancellationToken cancellationToken)
         {
             var payload = new JObject
             {
