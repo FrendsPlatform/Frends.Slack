@@ -1,7 +1,7 @@
 ﻿using System;
 using Frends.Slack.SendMessage.Definitions;
 
-namespace Frends.Slack.Helpers
+namespace Frends.Slack.SendMessage.Helpers
 {
     /// <summary>
     /// Handles error with usage of a standard ThrowOnFailure Frends flag

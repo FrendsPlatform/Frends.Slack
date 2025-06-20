@@ -4,9 +4,9 @@ Frends tasks for Slack operations.
 
 # Tasks
 
-- [Frends.Slack.SendMessage](Frends.SLack.SendMessage/README.md)
-- [Frends.Slack.UpdateMessage](Frends.SLack.UpdateMessage/README.md)
-- [Frends.Slack.DeleteMessage](Frends.SLack.DeleteMessage/README.md)
+- [Frends.Slack.SendMessage](Frends.Slack.SendMessage/README.md)
+- [Frends.Slack.UpdateMessage](Frends.Slack.UpdateMessage/README.md)
+- [Frends.Slack.DeleteMessage](Frends.Slack.DeleteMessage/README.md)
 
 # Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.

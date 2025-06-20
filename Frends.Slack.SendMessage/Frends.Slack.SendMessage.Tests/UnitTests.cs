@@ -169,9 +169,9 @@ public class UnitTests
             Text = "Unfurl true https://www.youtube.com/watch?v=-ZaXNJ5fuas",
         };
 
-        var resultUnfurlFalse = await SendMessage.Slack.SendMessage(inputUnfurlFalse, _connection, optionsUnfurlFalse, CancellationToken.None);
+        var resultUnfurlFalse = await Slack.SendMessage(inputUnfurlFalse, _connection, optionsUnfurlFalse, CancellationToken.None);
         Assert.IsTrue(resultUnfurlFalse.Success);
-        var resultUnfurlTrue = await SendMessage.Slack.SendMessage(inputUnfurlTrue, _connection, optionsUnfurlTrue, CancellationToken.None);
-        Assert.IsTrue(resultUnfurlFalse.Success);
+        var resultUnfurlTrue = await Slack.SendMessage(inputUnfurlTrue, _connection, optionsUnfurlTrue, CancellationToken.None);
+        Assert.IsTrue(resultUnfurlTrue.Success);
     }
 }
