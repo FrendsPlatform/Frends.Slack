@@ -3,8 +3,8 @@ using System.ComponentModel;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Frends.Slack.Helpers;
 using Frends.Slack.SendMessage.Definitions;
+using Frends.Slack.SendMessage.Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace Frends.Slack.SendMessage;
