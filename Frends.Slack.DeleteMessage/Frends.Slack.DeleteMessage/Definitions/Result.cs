@@ -27,6 +27,6 @@ public class Result
     /// <summary>
     /// Error that occurred during task execution.
     /// </summary>
-    /// <example>object { string Message, object { Exception Exception } AdditionalInfo }</example>
+    /// <example>{ Message = "Failed to delete Slack message.", AdditionalInfo = new Exception("Slack API returned 400 Bad Request") }</example>
     public Error Error { get; set; }
 }

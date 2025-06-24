@@ -16,6 +16,6 @@ public class Error
     /// <summary>
     /// Additional information about the error.
     /// </summary>
-    /// <example>object { Exception Exception }</example>
+    /// <example>new Exception("Slack API returned 400 Bad Request")</example>
     public Exception AdditionalInfo { get; set; }
 }
