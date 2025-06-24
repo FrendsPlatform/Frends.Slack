@@ -10,12 +10,12 @@ public class Error
     /// <summary>
     /// Summary of the error.
     /// </summary>
-    /// <example>Unable to join strings.</example>
+    /// <example>Failed to update Slack message.</example>
     public string Message { get; set; }
 
     /// <summary>
     /// Additional information about the error.
     /// </summary>
-    /// <example>object { Exception Exception }</example>
+    /// <example>new Exception("Slack API returned 400 Bad Request")</example>
     public Exception AdditionalInfo { get; set; }
 }
