@@ -68,7 +68,7 @@ public static class Slack
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", connection.Token);
 
             var response = await client.GetAsync(requestUrl, cancellationToken);
-            var content = await response.Content.ReadAsStringAsync();
+            var content = await response.Content.ReadAsStringAsync(cancellationToken);
             var json = JObject.Parse(content);
 
             if (!response.IsSuccessStatusCode || !(json["ok"]?.Value<bool>() ?? false))
@@ -95,7 +95,7 @@ public static class Slack
                     var threadUrl = $"https://slack.com/api/conversations.replies?channel={Uri.EscapeDataString(input.ChannelId)}&ts={Uri.EscapeDataString(threadTs)}";
 
                     var threadResponse = await client.GetAsync(threadUrl, cancellationToken);
-                    var threadContent = await threadResponse.Content.ReadAsStringAsync();
+                    var threadContent = await threadResponse.Content.ReadAsStringAsync(cancellationToken);
                     var threadJson = JObject.Parse(threadContent);
 
                     if (threadResponse.IsSuccessStatusCode && (threadJson["ok"]?.Value<bool>() ?? false))

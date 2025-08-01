@@ -8,7 +8,7 @@ namespace Frends.Slack.GetChannelMessages.Helpers;
 internal class Helper
 {
     /// <summary>
-    /// Converts a Slack timestamp string (Unix format, possibly with fractional seconds) to a UTC DateTime.
+    /// Converts a Slack timestamp string (Unix format with fractional seconds) to a UTC DateTime with millisecond precision.
     /// </summary>
     /// <param name="ts">The Slack timestamp string (e.g., "1722320647.269739").</param>
     /// <returns>A UTC DateTime if conversion succeeds; otherwise, null.</returns>
@@ -16,8 +16,7 @@ internal class Helper
     {
         if (double.TryParse(ts, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out double unixTime))
         {
-            // Extract integer seconds from fractional Unix timestamp
-            var dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)unixTime);
+            var dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds((long)(unixTime * 1000));
             return dateTimeOffset.UtcDateTime;
         }
 

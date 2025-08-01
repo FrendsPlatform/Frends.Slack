@@ -168,7 +168,7 @@ public class GetChannelMessagesTests
             Token = string.Empty,
         };
 
-        var options = new Options { IncludeThreads = false };
+        var options = new Options { IncludeThreads = false, ThrowErrorOnFailure = false };
 
         var result = await Slack.GetChannelMessages(input, connection, options, CancellationToken.None);
 
