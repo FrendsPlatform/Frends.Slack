@@ -19,13 +19,13 @@ namespace Frends.Slack.ListChannels.Helpers
         {
             if (throwOnFailure)
             {
-                throw new Exception($"{errorMessage}\n{exception.Message}");
+                throw new Exception($"{errorMessage}\n{exception.Message}, {exception.InnerException}");
             }
 
             return new Result(false, new Error
             {
                 Message = $"{errorMessage}\n{exception.Message}",
-                AdditionalInfo = exception.GetType().Name,
+                AdditionalInfo = exception.InnerException,
             });
         }
     }

@@ -70,6 +70,17 @@ public static class Slack
                 if (!response.IsSuccessStatusCode || !(json["ok"]?.Value<bool>() ?? false))
                 {
                     var error = json["error"]?.Value<string>() ?? "Unknown error";
+                    var needed = json["needed"]?.Value<string>();
+                    var provided = json["provided"]?.Value<string>();
+
+                    var innerDetails = $"HTTP {response.StatusCode}: {response.ReasonPhrase}";
+                    if (!string.IsNullOrEmpty(needed))
+                        innerDetails += $" | Needed: {needed}";
+                    if (!string.IsNullOrEmpty(provided))
+                        innerDetails += $" | Provided: {provided}";
+
+                    var innerException = new HttpRequestException(innerDetails);
+
                     return ErrorHandler.Handle(
                         new Exception($"Slack API error: {error}"),
                         options.ThrowErrorOnFailure,
