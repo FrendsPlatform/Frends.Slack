@@ -1,10 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Frends.Slack.GetChannelMessages.Definitions;
 using Frends.Slack.GetUserInfo.Definitions;
 using Frends.Slack.GetUserInfo.Helpers;
 using Newtonsoft.Json.Linq;

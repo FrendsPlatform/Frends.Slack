@@ -7,6 +7,7 @@ Frends tasks for Slack operations.
 - [Frends.Slack.SendMessage](Frends.Slack.SendMessage/README.md)
 - [Frends.Slack.UpdateMessage](Frends.Slack.UpdateMessage/README.md)
 - [Frends.Slack.DeleteMessage](Frends.Slack.DeleteMessage/README.md)
+- [Frends.Slack.GetChannelMessages](Frends.Slack.GetChannelMessages/README.md)
 - [Frends.Slack.GetUserInfo](Frends.Slack.GetUserInfo/README.md)
 
 # Contributing

@@ -1,20 +1,13 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Frends.Slack.GetChannelMessages.Definitions;
+namespace Frends.Slack.GetUserInfo.Definitions;
 
 /// <summary>
 /// Additional parameters.
 /// </summary>
 public class Options
 {
-    /// <summary>
-    /// Whether to include thread replies
-    /// </summary>
-    /// <example>false</example>
-    [DefaultValue(false)]
-    public bool IncludeThreads { get; set; } = false;
-
     /// <summary>
     /// Whether to throw an error on failure.
     /// </summary>

@@ -1,117 +1,112 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Frends.Slack.GetChannelMessages.Definitions;
 using Frends.Slack.GetUserInfo.Definitions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Frends.Slack.GetUserInfo.Tests;
 
 [TestClass]
-public class UnitTests
+public class GetUserInfoTests
 {
-    [TestClass]
-    public class GetUserInfoTests
+    private readonly string _token = Environment.GetEnvironmentVariable("FRENDS_SLACK_TEST_TOKEN");
+    private readonly string _validUserId = Environment.GetEnvironmentVariable("FRENDS_SLACK_TEST_USER_ID");
+
+    private Connection _connection;
+
+    [AssemblyInitialize]
+    public static void AssemblyInit(TestContext context)
     {
-        private readonly string _token = Environment.GetEnvironmentVariable("FRENDS_SLACK_TEST_TOKEN");
-        private readonly string _validUserId = Environment.GetEnvironmentVariable("FRENDS_SLACK_TEST_USER_ID");
+        DotNetEnv.Env.TraversePath().Load("./.env.local");
+    }
 
-        private Connection _connection;
+    [TestInitialize]
+    public void Setup()
+    {
+        _connection = new Connection { Token = _token };
+    }
 
-        [AssemblyInitialize]
-        public static void AssemblyInit(TestContext context)
+    [TestMethod]
+    public async Task ShouldFetchUserInfo_ValidUserId()
+    {
+        var input = new Input
         {
-            DotNetEnv.Env.TraversePath().Load("./.env.local");
-        }
+            UserId = _validUserId,
+        };
 
-        [TestInitialize]
-        public void Setup()
+        var options = new Options
         {
-            _connection = new Connection { Token = _token };
-        }
+            ThrowErrorOnFailure = false,
+            ErrorMessageOnFailure = "Failed to get user info",
+        };
 
-        [TestMethod]
-        public async Task ShouldFetchUserInfo_ValidUserId()
+        var result = await Slack.GetUserInfo(input, _connection, options, CancellationToken.None);
+
+        Assert.IsTrue(result.Success);
+        Assert.IsNotNull(result.User);
+        Assert.AreEqual(_validUserId, result.User.Id);
+        Assert.IsFalse(string.IsNullOrEmpty(result.User.Name));
+    }
+
+    [TestMethod]
+    public async Task ShouldFailWithInvalidUserId()
+    {
+        var input = new Input
         {
-            var input = new Input
-            {
-                UserId = _validUserId,
-            };
+            UserId = "INVALIDUSERID",
+        };
 
-            var options = new Options
-            {
-                ThrowErrorOnFailure = false,
-                ErrorMessageOnFailure = "Failed to get user info",
-            };
-
-            var result = await Slack.GetUserInfo(input, _connection, options, CancellationToken.None);
-
-            Assert.IsTrue(result.Success);
-            Assert.IsNotNull(result.User);
-            Assert.AreEqual(_validUserId, result.User.Id);
-            Assert.IsFalse(string.IsNullOrEmpty(result.User.Name));
-        }
-
-        [TestMethod]
-        public async Task ShouldFailWithInvalidUserId()
+        var options = new Options
         {
-            var input = new Input
-            {
-                UserId = "INVALIDUSERID",
-            };
+            ThrowErrorOnFailure = false,
+        };
 
-            var options = new Options
-            {
-                ThrowErrorOnFailure = false,
-            };
+        var result = await Slack.GetUserInfo(input, _connection, options, CancellationToken.None);
 
-            var result = await Slack.GetUserInfo(input, _connection, options, CancellationToken.None);
+        Assert.IsFalse(result.Success);
+        Assert.IsNotNull(result.Error);
+        Assert.IsTrue(result.Error.Message.Contains("user_not_found") || result.Error.Message.Contains("Slack API error"));
+    }
 
-            Assert.IsFalse(result.Success);
-            Assert.IsNotNull(result.Error);
-            Assert.IsTrue(result.Error.Message.Contains("user_not_found") || result.Error.Message.Contains("Slack API error"));
-        }
-
-        [TestMethod]
-        public async Task ShouldFailWithMissingUserId()
+    [TestMethod]
+    public async Task ShouldFailWithMissingUserId()
+    {
+        var input = new Input
         {
-            var input = new Input
-            {
-                UserId = null,
-            };
+            UserId = null,
+        };
 
-            var options = new Options
-            {
-                ThrowErrorOnFailure = false,
-            };
-
-            var result = await Slack.GetUserInfo(input, _connection, options, CancellationToken.None);
-
-            Assert.IsFalse(result.Success);
-            Assert.IsNotNull(result.Error);
-            Assert.IsTrue(result.Error.Message.Contains("User ID is required"));
-        }
-
-        [TestMethod]
-        public async Task ShouldFailWithMissingToken()
+        var options = new Options
         {
-            var input = new Input
-            {
-                UserId = _validUserId,
-            };
+            ThrowErrorOnFailure = false,
+        };
 
-            var badConnection = new Connection { Token = null };
+        var result = await Slack.GetUserInfo(input, _connection, options, CancellationToken.None);
 
-            var options = new Options
-            {
-                ThrowErrorOnFailure = false,
-            };
+        Assert.IsFalse(result.Success);
+        Assert.IsNotNull(result.Error);
+        Assert.IsTrue(result.Error.Message.Contains("User ID is required"));
+    }
 
-            var result = await Slack.GetUserInfo(input, badConnection, options, CancellationToken.None);
+    [TestMethod]
+    public async Task ShouldFailWithMissingToken()
+    {
+        var input = new Input
+        {
+            UserId = _validUserId,
+        };
 
-            Assert.IsFalse(result.Success);
-            Assert.IsNotNull(result.Error);
-            Assert.IsTrue(result.Error.Message.Contains("Slack token is required"));
-        }
+        var badConnection = new Connection { Token = null };
+
+        var options = new Options
+        {
+            ThrowErrorOnFailure = false,
+        };
+
+        var result = await Slack.GetUserInfo(input, badConnection, options, CancellationToken.None);
+
+        Assert.IsFalse(result.Success);
+        Assert.IsNotNull(result.Error);
+        Assert.IsTrue(result.Error.Message.Contains("Slack token is required"));
     }
 }

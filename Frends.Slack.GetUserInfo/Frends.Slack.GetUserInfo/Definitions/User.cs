@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Frends.Slack.GetUserInfo.Definitions
+﻿namespace Frends.Slack.GetUserInfo.Definitions
 {
     /// <summary>
     /// Represents a Slack user and their basic profile information.
