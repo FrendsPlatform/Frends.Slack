@@ -1,3 +1,5 @@
+using System;
+
 namespace Frends.Slack.GetChannelMessages.Definitions;
 
 /// <summary>
@@ -15,5 +17,5 @@ public class Error
     /// Additional information about the error.
     /// </summary>
     /// <example>ArgumentException</example>
-    public string AdditionalInfo { get; set; }
+    public Exception AdditionalInfo { get; set; }
 }

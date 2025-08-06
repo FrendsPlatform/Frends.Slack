@@ -1,32 +1,31 @@
 ﻿using System;
 using Frends.Slack.GetChannelMessages.Definitions;
 
-namespace Frends.Slack.GetChannelMessages.Helpers
+namespace Frends.Slack.GetChannelMessages.Helpers;
+
+/// <summary>
+/// Handles error with usage of a standard ThrowOnFailure Frends flag
+/// </summary>
+public static class ErrorHandler
 {
     /// <summary>
-    /// Handles error with usage of a standard ThrowOnFailure Frends flag
+    /// Handler for exceptions
     /// </summary>
-    public static class ErrorHandler
+    /// <param name="exception">Caught exception</param>
+    /// <param name="throwOnFailure">Frends flag</param>
+    /// <param name="errorMessage">Message to throw in error event</param>
+    /// <returns>Throw exception if a flag is true, else return Result with Error info</returns>
+    public static Result Handle(Exception exception, bool throwOnFailure, string errorMessage)
     {
-        /// <summary>
-        /// Handler for exceptions
-        /// </summary>
-        /// <param name="exception">Caught exception</param>
-        /// <param name="throwOnFailure">Frends flag</param>
-        /// <param name="errorMessage">Message to throw in error event</param>
-        /// <returns>Throw exception if a flag is true, else return Result with Error info</returns>
-        public static Result Handle(Exception exception, bool throwOnFailure, string errorMessage)
+        if (throwOnFailure)
         {
-            if (throwOnFailure)
-            {
-                throw new Exception($"{errorMessage}\n{exception.Message}");
-            }
-
-            return new Result(false, new Error
-            {
-                Message = $"{errorMessage}\n{exception.Message}",
-                AdditionalInfo = exception.GetType().Name,
-            });
+            throw new Exception($"{errorMessage}\n{exception.Message}, {exception}");
         }
+
+        return new Result(false, new Error
+        {
+            Message = $"{errorMessage}\n{exception.Message}",
+            AdditionalInfo = exception,
+        });
     }
 }
