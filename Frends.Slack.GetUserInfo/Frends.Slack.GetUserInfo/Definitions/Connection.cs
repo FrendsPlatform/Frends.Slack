@@ -22,5 +22,6 @@ public class Connection
     /// <example>xoxb-123456789</example>
     [DisplayFormat(DataFormatString = "Text")]
     [DefaultValue("")]
+    [PasswordPropertyText]
     public string Token { get; set; }
 }
