@@ -26,8 +26,9 @@ public static class Slack
     /// <returns>
     /// Result {
     ///     bool Success,
-    ///     Messages (list of Message),
+    ///     Channels (list of Channel),
     ///     bool HasMore,
+    ///     string NextCursor
     ///     Error Error { string Message, object AdditionalInfo }
     /// }
     /// </returns>
