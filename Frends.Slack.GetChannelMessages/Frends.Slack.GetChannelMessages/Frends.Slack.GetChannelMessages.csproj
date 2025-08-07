@@ -11,9 +11,9 @@
         <PackageTags>Frends</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <Description>Task to delete existing Slack messages.</Description>
+        <Description>Task to retrieve recent messages from a Slack channel</Description>
         <PackageProjectUrl>https://frends.com/</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/FrendsPlatform/Frends.Slack/tree/main/Frends.Slack.DeleteMessage</RepositoryUrl>
+        <RepositoryUrl>https://github.com/FrendsPlatform/Frends.Slack/tree/main/Frends.Slack.GetChannelMessages</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>

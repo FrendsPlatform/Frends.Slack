@@ -7,7 +7,7 @@
 - Improved error handling
 - Marked token as a password property
 
-## [1.0.0] - 2025-06-13
+## [1.0.0] - 2025-07-30
 
 ### Added
 

@@ -19,7 +19,7 @@ namespace Frends.Slack.DeleteMessage.Helpers
         {
             if (throwOnFailure)
             {
-                throw new Exception($"{errorMessage}\n{exception.Message}");
+                throw new Exception($"{errorMessage}\n{exception.Message}, {exception}");
             }
 
             return new Result(null, false, new Error
