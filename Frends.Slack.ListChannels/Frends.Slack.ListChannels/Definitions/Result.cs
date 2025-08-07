@@ -31,7 +31,7 @@ public class Result
     /// {
     /// "Id": "C01234567",
     /// "Name": "general",
-    /// "IsArchived": false
+    /// "IsArchived": true
     /// }
     /// </example>
     public List<Channel> Channels { get; set; }
