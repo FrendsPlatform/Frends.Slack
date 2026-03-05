@@ -1,8 +1,5 @@
 ﻿namespace Frends.Slack.SendMessage.Definitions;
 
-using Newtonsoft.Json.Linq;
-using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 /// <summary>
@@ -36,7 +33,7 @@ public class Input
     /// <example>[{ "type": "section", "text": { "type": "mrkdwn", "text": "*Hello* _world_!" } }]</example>
     [DisplayFormat(DataFormatString = "Text")]
     [UIHint(nameof(Mode), "", MessageMode.Blocks)]
-    public JArray Blocks { get; set; }
+    public string Blocks { get; set; }
 
     /// <summary>
     /// Timestamp of a message to reply in a thread.

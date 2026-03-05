@@ -55,13 +55,13 @@ public class UnitTests
         {
             ChannelId = _channelId,
             Mode = MessageMode.Blocks,
-            Blocks = JArray.Parse(@"[{
-                'type': 'section',
-                'text': {
-                    'type': 'mrkdwn',
-                    'text': '*Hello* from unit tests!'
+            Blocks = @"[{
+                ""type"": ""section"",
+                ""text"": {
+                    ""type"": ""mrkdwn"",
+                    ""text"": ""*Hello* from unit tests!""
                 }
-            }]"),
+            }]",
         };
     }
 
