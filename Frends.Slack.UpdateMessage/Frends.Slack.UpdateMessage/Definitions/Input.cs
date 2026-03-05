@@ -41,5 +41,5 @@ public class Input
     /// <example>[{ "type": "section", "text": { "type": "mrkdwn", "text": "*Updated* content" } }]</example>
     [DisplayFormat(DataFormatString = "Text")]
     [UIHint(nameof(Mode), "", MessageMode.Blocks)]
-    public JArray Blocks { get; set; }
+    public string Blocks { get; set; }
 }

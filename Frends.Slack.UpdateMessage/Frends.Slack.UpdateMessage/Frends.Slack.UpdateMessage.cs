@@ -45,7 +45,7 @@ public static class Slack
             if (input.Mode == MessageMode.PlainText && string.IsNullOrWhiteSpace(input.Text))
                 throw new ArgumentException("Text is required for PlainText mode", nameof(input.Text));
 
-            if (input.Mode == MessageMode.Blocks && (input.Blocks == null || input.Blocks.Count == 0))
+            if (input.Mode == MessageMode.Blocks && string.IsNullOrWhiteSpace(input.Blocks))
                 throw new ArgumentException("Blocks are required for Blocks mode", nameof(input.Blocks));
 
             var payload = new JObject
@@ -62,7 +62,14 @@ public static class Slack
             }
             else
             {
-                payload["blocks"] = input.Blocks;
+                try
+                {
+                    payload["blocks"] = JArray.Parse(input.Blocks);
+                }
+                catch (Exception)
+                {
+                    throw new ArgumentException("Blocks must be a valid JSON array", nameof(input.Blocks));
+                }
             }
 
             using (var client = new HttpClient())
