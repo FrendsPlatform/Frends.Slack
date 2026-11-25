@@ -21,6 +21,6 @@ public class Options
     /// </summary>
     /// <example>Task failed during execution</example>
     [DisplayFormat(DataFormatString = "Text")]
-    [DefaultValue("Failed to delete message")]
-    public string ErrorMessageOnFailure { get; set; } = "Failed to delete message";
+    [DefaultValue("")]
+    public string ErrorMessageOnFailure { get; set; } = string.Empty;
 }

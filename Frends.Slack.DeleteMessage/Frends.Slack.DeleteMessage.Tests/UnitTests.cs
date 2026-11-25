@@ -1,13 +1,13 @@
 namespace Frends.Slack.DeleteMessage.Tests;
 
 using System;
-using System.Threading;
-using Frends.Slack.DeleteMessage.Definitions;
 using System.IO;
-using dotenv.net;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using dotenv.net;
+using Frends.Slack.DeleteMessage.Definitions;
 using Frends.Slack.DeleteMessage.Tests.Helpers;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
 public class UnitTests
